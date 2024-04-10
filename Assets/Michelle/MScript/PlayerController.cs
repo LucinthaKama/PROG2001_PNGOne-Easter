@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("PickUp"))
+        if(other.gameObject.CompareTag("PickUp"))
         {
             other.gameObject.SetActive(false);
             count += 1;
@@ -56,8 +56,6 @@ public class PlayerController : MonoBehaviour
         countText.text = "Count: " + count.ToString();
         CheckScore();
     }
-
-
     public void CheckScore()
     {
         if (count >= 4)
