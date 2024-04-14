@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Jesse/JScene/Jesse's Scene.unity
     guid: 59eb671296e3bf149a72fd3c0e92d31d
+  - enabled: 1
+    path: Assets/Lucintha/LScene/LucinthasScene.unity
+    guid: 30c0176e1938b6a4fb12de6c234238a2
+  - enabled: 1
+    path: Assets/Michelle/MScene/MScene.unity
+    guid: f1d5d10118140f04f9fdc32642d7463b
+  - enabled: 1
+    path: Assets/SceneSelection/Scenes.unity
+    guid: a23d419600ba6b84aa59e7dfddac632e
   m_configObjects: {}
