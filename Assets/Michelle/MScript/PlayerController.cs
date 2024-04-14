@@ -6,6 +6,7 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    Animator animator;
     private Rigidbody rb;
 
     private float mX;
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         count = 0;
     }
@@ -32,6 +34,20 @@ public class PlayerController : MonoBehaviour
 
         rb.AddForce(movement * speed);
     }
+    void Update()
+    {
+        bool forward = Input.GetKey("w");
+
+        if (forward)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        if (!forward)
+        {
+            animator.SetBool("isWalking", false);
+        }
+    }
+    
     public void OnMove(InputValue mV)
     {
         Vector2 vector2 = mV.Get<Vector2>();
@@ -39,16 +55,17 @@ public class PlayerController : MonoBehaviour
         mX = vector2.x;
         mY = vector2.y;
     }
-
+    
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("PickUp"))
-        {
-            other.gameObject.SetActive(false);
-            count += 1;
+    
+       if (other.gameObject.CompareTag("PickUp"))
+       {
+           other.gameObject.SetActive(false);
+                count += 1;
 
-            SetCountText();
-        }
+                SetCountText();
+       }
     }
 
     public void SetCountText()
@@ -56,12 +73,15 @@ public class PlayerController : MonoBehaviour
         countText.text = "Count: " + count.ToString();
         CheckScore();
     }
+    
     public void CheckScore()
     {
-        if (count >= 4)
-        {
-            winPanel.SetActive(true);
+        if (count >= 10)
+            {
+                winPanel.SetActive(true);
+
+            }
         }
     }
-}
+
         
