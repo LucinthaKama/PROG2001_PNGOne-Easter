@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PickUp
+  - easter egg
   layers:
   - Default
   - TransparentFX
