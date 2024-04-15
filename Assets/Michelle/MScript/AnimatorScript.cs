@@ -20,5 +20,9 @@ public class AnimatorScript : MonoBehaviour
         {
             animator.SetBool("isWalking", true);
         }
+        if (!forward)
+        {
+            animator.SetBool("isWalking", false);
+        }
     }
 }
