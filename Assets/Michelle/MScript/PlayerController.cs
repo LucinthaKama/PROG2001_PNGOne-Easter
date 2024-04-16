@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
@@ -7,6 +8,7 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     Animator animator;
+
     private Rigidbody rb;
 
     private float mX;
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+
         rb = GetComponent<Rigidbody>();
         count = 0;
     }
@@ -34,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
         rb.AddForce(movement * speed);
     }
+
     void Update()
     {
         bool forward = Input.GetKey("w");
@@ -46,42 +50,42 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isWalking", false);
         }
-    }
-    
-    public void OnMove(InputValue mV)
-    {
-        Vector2 vector2 = mV.Get<Vector2>();
 
-        mX = vector2.x;
-        mY = vector2.y;
-    }
-    
-    public void OnTriggerEnter(Collider other)
-    {
-    
-       if (other.gameObject.CompareTag("PickUp"))
-       {
-           other.gameObject.SetActive(false);
+
+        void OnMove(InputValue mV)
+        {
+            Vector2 vector2 = mV.Get<Vector2>();
+
+            mX = vector2.x;
+            mY = vector2.y;
+        }
+
+        void OnTriggerEnter(Collider other)
+        {
+
+            if (other.gameObject.CompareTag("PickUp"))
+            {
+                other.gameObject.SetActive(false);
                 count += 1;
 
                 SetCountText();
-       }
-    }
+            }
+        }
 
-    public void SetCountText()
-    {
-        countText.text = "Count: " + count.ToString();
-        CheckScore();
-    }
-    
-    public void CheckScore()
-    {
-        if (count >= 10)
+        void SetCountText()
+        {
+            countText.text = "Count: " + count.ToString();
+            CheckScore();
+        }
+
+        void CheckScore()
+        {
+            if (count >= 10)
             {
                 winPanel.SetActive(true);
 
             }
         }
     }
+}
 
-        
