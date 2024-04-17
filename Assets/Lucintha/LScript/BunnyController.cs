@@ -71,6 +71,7 @@ public class BunnyController : MonoBehaviour
         {
  // Deactivate the collided object (making it disappear).
             other.gameObject.SetActive(false);
+        }   
 
  // Increment the count of "PickUp" objects collected.
             count = count + 1;
@@ -78,7 +79,7 @@ public class BunnyController : MonoBehaviour
  // Update the count display.
             SetCountText();
         }
-    }
+    
 
  // Function to update the displayed count of "PickUp" objects collected.
  void SetCountText() 
@@ -87,10 +88,11 @@ public class BunnyController : MonoBehaviour
         countText.text = "Count: " + count.ToString();
 
  // Check if the count has reached or exceeded the win condition.
- if (count >= 6)
+ if (count >=6)
         {
  // Display the win text.
             winTextObject.SetActive(true);
         }
     }
+
 }
